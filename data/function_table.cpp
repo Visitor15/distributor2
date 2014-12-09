@@ -21,7 +21,7 @@ FunctionUri* FunctionTable::replaceFunction(SharedFunction &func) {
     itter = _functionMap.find(func.getInternalId());
     if(itter != _functionMap.end()) {
         (*itter).second = func;
-        return new FunctionUri(func.getInternalId(), func.getStringId());
+        return new FunctionUri(func.getInternalId(), func.getExternalId());
     }
     return nullptr;
 }

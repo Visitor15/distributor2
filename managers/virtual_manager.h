@@ -3,7 +3,6 @@
 
 #include "manager.h"
 #include "data/function_table.h"
-#include "uris/function_uri.h"
 #include "utils/utils.h"
 
 class VManager : public Manager<VManager> {

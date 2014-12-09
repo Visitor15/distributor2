@@ -4,7 +4,7 @@
 #include <bits/stringfwd.h>
 #include "function_response.h"
 
-typedef FunctionResponse* (*functionPtr)(FunctionData data);
+typedef FunctionResponse (*functionPtr)(FunctionData data);
 
 typedef struct sharedFunctionPtr_t {
 private:
@@ -21,7 +21,7 @@ public:
 
     sharedFunctionPtr_t(char* strId, functionPtr ptr) : _externalId(strId), _internalId(-1), _functionPtr(ptr) {}
 
-    ~sharedFunctionPtr_t();
+    ~sharedFunctionPtr_t() {}
 
     long getInternalId() {
         return _internalId;
@@ -39,7 +39,7 @@ public:
         _externalId = id;
     }
 
-    FunctionResponse* executeFunction(FunctionData &inputData) {
+    FunctionResponse executeFunction(FunctionData &inputData) {
         return (*_functionPtr) (inputData);
     }
 

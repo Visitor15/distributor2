@@ -7,6 +7,7 @@ class FunctionResponse {
 
 private:
     FunctionData _data;
+
 public:
     FunctionResponse();
 
@@ -14,9 +15,7 @@ public:
 
     ~FunctionResponse();
 
-    FunctionData getData() {
-        return _data;
-    }
+    FunctionData getData();
 
 };
 

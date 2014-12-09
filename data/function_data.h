@@ -1,5 +1,8 @@
 #ifndef __function_data_h__
 #define __function_data_h__
+
+#include <iostream>
+
 typedef struct raw_data_t {
 private:
 

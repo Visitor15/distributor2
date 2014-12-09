@@ -1,12 +1,12 @@
 #include <map>
+#include <utility>
 
-static const int SCHEME     = 0;
-static const int USER_INFO  = 1;
-static const int HOST       = 2;
-static const int PORT       = 3;
-static const int ACTION     = 4;
-static const int ID         = 5;
-
+const static int SCHEME     = 0;
+const static int USER_INFO  = 1;
+const static int HOST       = 2;
+const static int PORT       = 3;
+const static int ACTION     = 4;
+const static int ID         = 5;
 
 typedef struct uri_t {
 private:
@@ -18,6 +18,7 @@ public:
     }
 
     void init() {
+        std::make_pair(1, 1);
         _uriMap.insert(std::make_pair(SCHEME, ""));
         _uriMap.insert(std::make_pair(USER_INFO, ""));
         _uriMap.insert(std::make_pair(HOST, ""));
@@ -28,17 +29,17 @@ public:
 
     std::string toString() {
         std::string _str("");
-        _str.append(_uriMap.find(SCHEME)
+        _str.append(_uriMap.find(SCHEME)->second)
             .append("://")
-            .append(_uriMap.find(USER_INFO))
+            .append(_uriMap.find(USER_INFO)->second)
             .append("@")
-            .append(_uriMap.find(HOST))
+            .append(_uriMap.find(HOST)->second)
             .append(":")
-            .append(_uriMap.find(PORT))
+            .append(_uriMap.find(PORT)->second)
             .append("/")
-            .append(_uriMap.find(ACTION))
+            .append(_uriMap.find(ACTION)->second)
             .append("#")
-            .append(_uriMap.find(ID));
+            .append(_uriMap.find(ID)->second);
         return _str;
     }
 
@@ -56,13 +57,11 @@ private:
 public:
     Uri(long internalId, std::string externalId);
 
-    std::string getExternalId() {
-        return _externalId;
-    }
+    ~Uri();
 
-    long getInternalId() {
-        return _internalId;
-    }
+    std::string getExternalId();
+
+    long getInternalId();
 
     bool resolve();
 

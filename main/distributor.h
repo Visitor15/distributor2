@@ -8,7 +8,6 @@
 #include <iostream>
 
 #include "functions/shared_function.h"
-#include "uris/function_uri.h"
 #include "functions/function_response.h"
 #include "functions/function_request.h"
 #include "data/function_data.h"
