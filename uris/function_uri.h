@@ -12,8 +12,12 @@ public:
 
     bool resolve(FunctionRequest *request, FunctionResponse &response);
 
-    virtual std::string getExternalId();
+    virtual std::string getExternalId() {
+        return Uri::getExternalId();
+    }
 
-    virtual long getInternalId();
+    virtual long getInternalId() {
+        return Uri::getInternalId();
+    }
 
 };

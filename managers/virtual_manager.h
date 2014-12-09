@@ -12,8 +12,6 @@ private:
 public:
     static const int FAILED_REGISTRATION = -1;
 
-    static VManager INSTANCE;
-
 private:
     VManager(VManager const&);          // Do not implement. This is a SINGLETON!
     void operator=(VManager const&);    // Do not implement. This is a SINGLETON!
@@ -39,5 +37,6 @@ public:
     bool findFunction(long internalId, SharedFunction &returnFunc);
 
     FunctionUri* replaceFunction(long funcId, SharedFunction &function);
-
 };
+
+static VManager INSTANCE;

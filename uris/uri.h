@@ -55,13 +55,20 @@ private:
     UriStruct _uri;
 
 public:
-    Uri(long internalId, std::string externalId);
+    Uri(long internalId, std::string externalId) {
+        _internalId = internalId;
+        _externalId = externalId;
+    }
 
-    ~Uri();
+    virtual ~Uri() {}
 
-    std::string getExternalId();
+    virtual std::string getExternalId() {
+        return _externalId;
+    }
 
-    long getInternalId();
+    virtual long getInternalId() {
+        return _internalId;
+    }
 
     bool resolve();
 
