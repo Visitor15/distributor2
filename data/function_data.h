@@ -1,23 +1,21 @@
 #ifndef __function_data_h__
 #define __function_data_h__
-
 typedef struct raw_data_t {
 private:
 
 public:
-    function_data_t() : _length(0) {}
+    raw_data_t() : _length(0) {}
 
     char* _buf;
     unsigned long _length;
 } Blob;
 
-
 typedef struct function_data_t {
 public:
-    function_data_t() : Blob(), _strData("") {}
+    function_data_t() : _blob(), _strData("") {}
 
     void setStringData(std::string str) {
-        _strData(str);
+        _strData = str;
     }
 
     std::string getStringData() {
@@ -37,7 +35,4 @@ private:
     std::string _strData;
 
 } FunctionData;
-
-#endifvoid function_data_t::setStringData(char const *string){
-
-}
+#endif

@@ -1,5 +1,4 @@
-#include <bits/stringfwd.h>
-#include <bits/basic_string.h>
+#include <map>
 
 static const int SCHEME     = 0;
 static const int USER_INFO  = 1;
@@ -8,29 +7,28 @@ static const int PORT       = 3;
 static const int ACTION     = 4;
 static const int ID         = 5;
 
-static const enum URI_SCHEME {
-
-};
 
 typedef struct uri_t {
 private:
     std::map<int, std::string> _uriMap;
 
 public:
-    uri_t() : init() {}
+    uri_t() : _uriMap() {
+        init();
+    }
 
     void init() {
-        _uriMap.insert(std::make_pair<int, std::string>(SCHEME, ""));
-        _uriMap.insert(std::make_pair<int, std::string>(USER_INFO, ""));
-        _uriMap.insert(std::make_pair<int, std::string>(HOST, ""));
-        _uriMap.insert(std::make_pair<int, std::string>(PORT, ""));
-        _uriMap.insert(std::make_pair<int, std::string>(ACTION, ""));
-        _uriMap.insert(std::make_pair<int, std::string>(ID, ""));
+        _uriMap.insert(std::make_pair(SCHEME, ""));
+        _uriMap.insert(std::make_pair(USER_INFO, ""));
+        _uriMap.insert(std::make_pair(HOST, ""));
+        _uriMap.insert(std::make_pair(PORT, ""));
+        _uriMap.insert(std::make_pair(ACTION, ""));
+        _uriMap.insert(std::make_pair(ID, ""));
     }
 
     std::string toString() {
         std::string _str("");
-        _str.append(_uriMap.find(SCHEME))
+        _str.append(_uriMap.find(SCHEME)
             .append("://")
             .append(_uriMap.find(USER_INFO))
             .append("@")

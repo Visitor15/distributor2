@@ -7,7 +7,6 @@
 typedef FunctionResponse* (*functionPtr)(FunctionData data);
 
 typedef struct sharedFunctionPtr_t {
-
 private:
     std::string _externalId;
 
@@ -20,7 +19,7 @@ public:
 
     sharedFunctionPtr_t(char* strId) : _externalId(strId), _internalId(-1) {}
 
-    sharedFunctionPtr_t(char* strId, functionPtr ptr) : _externalId(strId), _internalId(-1), _funcPtr(ptr) {}
+    sharedFunctionPtr_t(char* strId, functionPtr ptr) : _externalId(strId), _internalId(-1), _functionPtr(ptr) {}
 
     ~sharedFunctionPtr_t();
 
@@ -40,7 +39,7 @@ public:
         _externalId = id;
     }
 
-    FunctionResponse executeFunction(FunctionData &inputData) {
+    FunctionResponse* executeFunction(FunctionData &inputData) {
         return (*_functionPtr) (inputData);
     }
 

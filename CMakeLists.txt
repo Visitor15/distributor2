@@ -12,3 +12,4 @@ add_executable(distributor ${SOURCE_FILES})
 
 target_link_libraries(distributor MAIN)
 target_link_libraries(distributor MANAGERS)
+target_link_libraries(distributor FUNCTIONS)

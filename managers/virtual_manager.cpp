@@ -16,11 +16,9 @@ FunctionUri* VManager::registerFunction(SharedFunction &function) {
 
 long VManager::registerFunctionInternal(SharedFunction &function) {
     long generated_id = -1;
-
     do {
         generated_id = Utils::RANDOM_LONG(1, LONG_MAX, true);
     } while (!insertFunctionInternal(generated_id, function));
-
     return generated_id;
 }
 

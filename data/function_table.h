@@ -1,10 +1,10 @@
 #ifndef __function_table_h__
 #define __function_table_h__
 
-#include <bits/stl_map.h>
+#include <map>
 
 #include "functions/shared_function.h"
-#include "filters/function_uri.h"
+#include "uris/function_uri.h"
 
 class FunctionTable {
 private:
