@@ -32,6 +32,14 @@ public:
         return _externalId;
     }
 
+    void setInternalId(long id) {
+        _internalId = id;
+    }
+
+    void setExternalId(std::string id) {
+        _externalId = id;
+    }
+
     FunctionResponse executeFunction(FunctionData &inputData) {
         return (*_functionPtr) (inputData);
     }

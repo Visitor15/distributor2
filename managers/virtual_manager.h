@@ -1,7 +1,10 @@
 #include <iostream>
+#include <limits.h>
 
 #include "manager.h"
 #include "data/function_table.h"
+#include "uris/function_uri.h"
+#include "utils/utils.h"
 
 class VManager : public Manager<VManager> {
 private:
@@ -32,10 +35,10 @@ public:
         }
     }
 
-    InstructionID* registerFunction(SharedFunction& func);
+    FunctionUri* registerFunction(SharedFunction& func);
 
     bool findFunction(long internalId, SharedFunction &returnFunc);
 
-    InstructionID* replaceFunction(long funcId, SharedFunction &function);
+    FunctionUri* replaceFunction(long funcId, SharedFunction &function);
 
 };

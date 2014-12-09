@@ -4,6 +4,7 @@
 #include <bits/stl_map.h>
 
 #include "functions/shared_function.h"
+#include "filters/function_uri.h"
 
 class FunctionTable {
 private:
@@ -16,7 +17,9 @@ public:
 
     bool insertFunction(SharedFunction &function);
 
+    bool findFunction(long internalId, SharedFunction& foundFunc);
 
+    FunctionUri* replaceFunction(SharedFunction&);
 };
 
 #endif

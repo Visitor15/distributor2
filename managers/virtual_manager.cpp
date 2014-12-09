@@ -4,41 +4,36 @@ VManager& VManager::GET_INSTANCE() {
     return INSTANCE;
 }
 
-InstructionID* VManager::registerSharedFunction(SharedFunction &function) {
+FunctionUri* VManager::registerFunction(SharedFunction &function) {
 
-    if(registerFunction(function) != FAILED_REGISTRATION) {
-        return new InstructionID(function.getInternalId(), function.getStringId());
+    if(registerFunctionInternal(function) != FAILED_REGISTRATION) {
+        return new FunctionUri(function.getInternalId(), function.getExternalId());
     }
     else {
         return nullptr;
     }
 }
 
-long VManager::registerFunction(SharedFunction &function) {
+long VManager::registerFunctionInternal(SharedFunction &function) {
+    long generated_id = -1;
 
-    if(function.validate()) {
-        long generated_id = -1;
+    do {
+        generated_id = Utils::RANDOM_LONG(1, LONG_MAX, true);
+    } while (!insertFunctionInternal(generated_id, function));
 
-        do {
-            generated_id = Utils::RANDOM_LONG(1, LONG_MAX, true);
-        } while (!insertFunction(generated_id, function));
-
-        return generated_id;
-    }
-
-    return -1;
+    return generated_id;
 }
 
-bool VManager::insertFunction(long funcId, SharedFunction &function) {
+bool VManager::insertFunctionInternal(long funcId, SharedFunction &function) {
     function.setInternalId(funcId);
-    return vTable->insertSharedFunction(function);
+    return _functionTable->insertFunction(function);
 }
 
-InstructionID* VManager::replaceFunction(long funcId, SharedFunction &function) {
+FunctionUri* VManager::replaceFunction(long funcId, SharedFunction &function) {
     function.setInternalId(funcId);
-    return vTable->replaceSharedFunction(function);
+    return _functionTable->replaceFunction(function);
 }
 
-bool VManager::findSharedFunction(long internalId, SharedFunction &returnFunc) {
-    return vTable->findSharedFunction(internalId, returnFunc);
+bool VManager::findFunction(long internalId, SharedFunction &returnFunc) {
+    return _functionTable->findFunction(internalId, returnFunc);
 }

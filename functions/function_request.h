@@ -10,6 +10,7 @@ public:
 
     ~FunctionRequest();
 
+    void setRequestData(FunctionData data);
 };
 
 #endif
