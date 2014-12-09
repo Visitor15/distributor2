@@ -12,8 +12,10 @@ typedef struct uri_t {
 private:
     std::map<int, std::string> _uriMap;
 
+    std::string tempUri;
+
 public:
-    uri_t() : _uriMap() {
+    uri_t() : _uriMap(), tempUri("NULL") {
         init();
     }
 
@@ -28,19 +30,26 @@ public:
     }
 
     std::string toString() {
-        std::string _str("");
-        _str.append(_uriMap.find(SCHEME)->second)
-            .append("://")
-            .append(_uriMap.find(USER_INFO)->second)
-            .append("@")
-            .append(_uriMap.find(HOST)->second)
-            .append(":")
-            .append(_uriMap.find(PORT)->second)
-            .append("/")
-            .append(_uriMap.find(ACTION)->second)
-            .append("#")
-            .append(_uriMap.find(ID)->second);
-        return _str;
+        return tempUri;
+//        std::string _str("");
+//        _str.append(_uriMap.find(SCHEME)->second)
+//            .append("://")
+//            .append(_uriMap.find(USER_INFO)->second)
+//            .append("@")
+//            .append(_uriMap.find(HOST)->second)
+//            .append(":")
+//            .append(_uriMap.find(PORT)->second)
+//            .append("/")
+//            .append(_uriMap.find(ACTION)->second)
+//            .append("#")
+//            .append(_uriMap.find(ID)->second);
+//        return _str;
+    }
+
+    void fromString(std::string uriStr) {
+        std::cout << "Setting URI: " << uriStr << std::endl;
+        tempUri = uriStr;
+        std::cout << "SET URI TO : " << toString() << std::endl;
     }
 
 } UriStruct;
@@ -58,6 +67,8 @@ public:
     Uri(long internalId, std::string externalId) {
         _internalId = internalId;
         _externalId = externalId;
+
+        _uri.init();
     }
 
     virtual ~Uri() {}
@@ -70,6 +81,12 @@ public:
         return _internalId;
     }
 
-    bool resolve();
+    UriStruct getUriStruct() {
+        return _uri;
+    }
+
+    virtual bool resolve() { return false; }
+
+    virtual void buildFromUriString(std::string uriStr) = 0;
 
 };

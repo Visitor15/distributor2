@@ -4,7 +4,8 @@
 #include <map>
 
 #include "functions/shared_function.h"
-#include "uris/function_uri.h"
+
+class FunctionUri;
 
 class FunctionTable {
 private:

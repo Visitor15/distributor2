@@ -8,16 +8,18 @@ private:
 public:
     FunctionUri(long internalId, std::string externalId);
 
+    FunctionUri(std::string uriStr);
+
     ~FunctionUri();
 
     bool resolve(FunctionRequest *request, FunctionResponse &response);
 
-    virtual std::string getExternalId() {
-        return Uri::getExternalId();
-    }
+    virtual bool resolve() { return false; }
 
-    virtual long getInternalId() {
-        return Uri::getInternalId();
-    }
+    virtual void buildFromUriString(std::string uriStr);
+
+    std::string getExternalId();
+
+    long getInternalId();
 
 };

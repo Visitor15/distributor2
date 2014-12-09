@@ -1,4 +1,5 @@
 #include "function_table.h"
+#include "uris/function_uri.h"
 
 FunctionTable::FunctionTable() {
 

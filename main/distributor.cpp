@@ -36,9 +36,10 @@ void Distributor::distributeInternal() {
         std::cout << "Instruction name: " << _functionUri->getExternalId() << std::endl;
         std::cout << "Instruction ID: " << std::to_string(_functionUri->getInternalId()) << std::endl;
 
-        _functionReq = new FunctionRequest();
+        _functionReq = new FunctionRequest("local://user:password@localhost:42424/request#" + _functionUri->getExternalId(), _functionUri);
         _functionReq->setRequestData(FunctionData());
         _functionRes = new FunctionResponse();
+        std::cout << "Function URI: " << _functionReq->getFunctionUriString() << std::endl;
         if(_functionUri->resolve(_functionReq, *_functionRes)) {
             std::cout << "Instruction returned: " << _functionRes->getData().getStringData() << std::endl;
         }
@@ -55,9 +56,10 @@ void Distributor::distributeInternal() {
         std::cout << "Instruction name: " << _functionUri->getExternalId() << std::endl;
         std::cout << "Instruction ID: " << std::to_string(_functionUri->getInternalId()) << std::endl;
 
-        _functionReq = new FunctionRequest();
+        _functionReq = new FunctionRequest("local://user:password@localhost:42424/request#" + _functionUri->getExternalId(), _functionUri);
         _functionReq->setRequestData(FunctionData());
         _functionRes = new FunctionResponse();
+        std::cout << "Function URI: " << _functionReq->getFunctionUriString() << std::endl;
         if(_functionUri->resolve(_functionReq, *_functionRes)) {
             std::cout << "Instruction returned: " << _functionRes->getData().getStringData() << std::endl;
         }
@@ -74,9 +76,10 @@ void Distributor::distributeInternal() {
         std::cout << "Instruction name: " << _functionUri->getExternalId() << std::endl;
         std::cout << "Instruction ID: " << std::to_string(_functionUri->getInternalId()) << std::endl;
 
-        _functionReq = new FunctionRequest();
+        _functionReq = new FunctionRequest("local://user:password@localhost:42424/request#" + _functionUri->getExternalId(), _functionUri);
         _functionReq->setRequestData(FunctionData());
         _functionRes = new FunctionResponse();
+        std::cout << "Function URI: " << _functionReq->getFunctionUriString() << std::endl;
         if(_functionUri->resolve(_functionReq, *_functionRes)) {
             std::cout << "Instruction returned: " << _functionRes->getData().getStringData() << std::endl;
         }

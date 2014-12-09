@@ -1,4 +1,5 @@
 #include "virtual_manager.h"
+#include "uris/function_uri.h"
 
 VManager& VManager::GET_INSTANCE() {
     return INSTANCE;

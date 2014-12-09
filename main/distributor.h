@@ -10,6 +10,7 @@
 #include "functions/shared_function.h"
 #include "functions/function_response.h"
 #include "functions/function_request.h"
+#include "uris/function_uri.h"
 #include "data/function_data.h"
 #include "managers/virtual_manager.h"
 
