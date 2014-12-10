@@ -15,12 +15,11 @@ private:
     std::string tempUri;
 
 public:
-    uri_t() : _uriMap(), tempUri("NULL") {
+    uri_t() : _uriMap() {
         init();
     }
 
     void init() {
-        std::make_pair(1, 1);
         _uriMap.insert(std::make_pair(SCHEME, ""));
         _uriMap.insert(std::make_pair(USER_INFO, ""));
         _uriMap.insert(std::make_pair(HOST, ""));
